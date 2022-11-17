@@ -52,7 +52,7 @@ export function Home(){
       <SearchFormContainer>
         <SearchContent>
           <strong>Publicações</strong>
-          <span>5  publicações</span>
+          <span>{issuesItems.length} publicações</span>
         </SearchContent>
 
       <Form onSubmit={handleSubmit(FormInput)}>
@@ -65,13 +65,11 @@ export function Home(){
       </Form>
     </SearchFormContainer>
 
-
-
       <CardContainer>
         {
           issuesItems.map(issue => {
             return (
-              <Card key={issue.number} body={issue.body} title={issue.title} created_at={issue.created_at}/>
+              <Card key={issue.number} body={issue.body} title={issue.title} created_at={issue.created_at} id={issue.number}/>
             )
           })
         }

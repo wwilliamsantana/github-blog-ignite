@@ -1,48 +1,82 @@
+import axios from "axios";
 import { ArrowLeft, ArrowSquareOut, CalendarBlank, ChatCircle, GithubLogo } from "phosphor-react";
+import {useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { ContentPost, InfosContainer, InfosContent, MainPost } from "./styles";
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import ReactMarkdown from 'react-markdown'
+
+interface PropsPost{
+  html_url: string
+  title: string
+  user: {
+    login: string
+  }
+  created_at: string
+  comments: number
+  body: string
+}
 
 export function Post(){
+  const {id} = useParams<{id: string}>()
+  const [data, setData] = useState<PropsPost>()
+
+  async function GetIssues(){
+    const response = await axios.get(`https://api.github.com/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${id}`)
+    setData(response.data)
+  }
+
+  useEffect(()=> {
+    GetIssues()
+  }, [])
+
+  if(!data){
+    return <div>Error</div>
+  }
+
   return (
     <div>
-
       <MainPost>
         <div>
-          <a href="">
+          <Link to={"/"}>
             <ArrowLeft size={16} weight={"fill"}/>
             Voltar
-          </a>
-          <a href="">
+          </Link>
+          <a href={data.html_url} target={"_blank"}>
             Ver no github
             <ArrowSquareOut size={16} weight={"fill"}/>
           </a>
         </div>
 
-        <strong>JavaScript data types and data structures</strong>
+        <strong>{data.title}</strong>
 
         <InfosContainer>
             <InfosContent>
                 <GithubLogo size={16} weight={"fill"}/>
-                <span>wwilliamSantana</span>
+                <span>{data.user.login}</span>
             </InfosContent>
             <InfosContent>
                 <CalendarBlank  size={16} weight={"fill"}/>
-                <span>Há 1 dias</span>
+                <span>
+                {formatDistanceToNow(new Date(data.created_at), {
+                  addSuffix: true,
+                  locale: ptBR,
+                })} 
+                </span>
             </InfosContent>
             <InfosContent>
                 <ChatCircle  size={16} weight={"fill"}/>
-                <span>5 Comentários</span>
+                <span>{data.comments}</span>
             </InfosContent>
         </InfosContainer>
 
       </MainPost>
 
       <ContentPost>
-        <p>
-          Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-
-          Dynamic typing
-          JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
-        </p>
+        <ReactMarkdown>
+          {data.body}
+        </ReactMarkdown>
       </ContentPost>
 
     </div>

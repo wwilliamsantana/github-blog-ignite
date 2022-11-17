@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(Link)`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   padding: 2rem;
+  text-decoration: none;
   background: ${props => props.theme["base-post"]};
   border-radius: 10px;
 `

@@ -55,10 +55,6 @@ export const ContentPost = styled.div`
 
   p{
     color: ${props => props.theme["base-text"]};
-
-    ::first-line{
-      font-weight: 700;
-    }
   }
 
 `
