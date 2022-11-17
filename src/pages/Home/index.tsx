@@ -1,24 +1,80 @@
-import { useContext } from "react";
-import { GitContext } from "../../context/ContextGit";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Card } from "./components/Card";
 import { Profile } from "./components/Profile";
-import { SearchForm } from "./components/SearchForm";
-import { CardContainer } from "./styles";
+import { CardContainer, Form, SearchContent, SearchFormContainer } from "./styles";
 
+interface GetIssuesProps{
+  number: number
+  title: string
+  body: string
+  created_at: string
+}
+
+interface PropsSearch{
+  search: string
+}
 
 export function Home(){
-  const {issues} = useContext(GitContext)
+
+  const [issuesItems, setIssuesItems] = useState<GetIssuesProps[]>([])
+  const {register, handleSubmit, reset} = useForm<PropsSearch>()
+
+  function FormInput(data: PropsSearch){
+    GetIssuesGit(data.search)
+    reset()
+  }
+
+  async function GetIssuesGit(data?: string) {
+    const query = !data ? "" : data
+    const response = await axios.get("https://api.github.com/search/issues", {
+      params:{
+        q: `repo:rocketseat-education/reactjs-github-blog-challenge is:issue ${query}`
+      }
+    })
+    setIssuesItems(response.data.items)
+  }
+
+  useEffect(()=> {
+    GetIssuesGit()
+  }, [])
+
+  if(!issuesItems){
+    return <div>Error</div>
+  }
+
 
   return (
     <div>
       <Profile/>
-      <SearchForm/>
+      
+      <SearchFormContainer>
+        <SearchContent>
+          <strong>Publicações</strong>
+          <span>5  publicações</span>
+        </SearchContent>
+
+      <Form onSubmit={handleSubmit(FormInput)}>
+        <input 
+          autoComplete="off"
+          type="text" 
+          placeholder="Buscar conteúdo" 
+          {...register("search")}
+        />
+      </Form>
+    </SearchFormContainer>
+
+
+
       <CardContainer>
-        {issues.map(item => {
-          return (
-            <Card key={item.number} body={item.body} created_at={item.created_at} title={item.title}/>
-          )
-        })}
+        {
+          issuesItems.map(issue => {
+            return (
+              <Card key={issue.number} body={issue.body} title={issue.title} created_at={issue.created_at}/>
+            )
+          })
+        }
       </CardContainer>
     </div>
   )

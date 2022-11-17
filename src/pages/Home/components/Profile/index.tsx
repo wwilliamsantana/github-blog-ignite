@@ -17,6 +17,7 @@ export function Profile(){
 
   async function GetGitHub() {
     const response = await axios.get("https://api.github.com/users/wwilliamsantana")
+
     setDataGit(response.data)
   }
 
@@ -24,30 +25,33 @@ export function Profile(){
     GetGitHub()
   }, [])
 
+  if(!dataGit){
+    return <div>Erro</div>
+  }
+
   return (
     
    <ProfileContainer>
-      <img src={dataGit?.avatar_url}/>
+      <img src={dataGit.avatar_url}/>
       
       <ProfileContent>
-
         <ProfileTitle>
-          <h2>{dataGit?.name}</h2>
-          <a href={dataGit?.html_url} target={"_blank"}>
+          <h2>{dataGit.name}</h2>
+          <a href={dataGit.html_url} target={"_blank"}>
             Github
             <ArrowSquareOut size={14} weight={"fill"} />
           </a>
         </ProfileTitle>
 
         <ProfileSubtitle>
-          {dataGit?.bio}
+          {dataGit.bio}
         </ProfileSubtitle>
 
         <InfosContent>
 
           <InfoProfile>
             <GithubLogo size={18}/>
-            <span>{dataGit?.login}</span> 
+            <span>{dataGit.login}</span> 
           </InfoProfile>
 
           <InfoProfile>
@@ -57,7 +61,7 @@ export function Profile(){
 
           <InfoProfile>
             <Users size={18}/>
-            <span>{dataGit?.followers} Seguidores</span> 
+            <span>{dataGit.followers} Seguidores</span> 
           </InfoProfile>
 
         </InfosContent>

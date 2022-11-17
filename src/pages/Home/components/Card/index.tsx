@@ -16,10 +16,10 @@ export function Card(props : CardPorps){
       <CardTitle>
         <strong>{props.title}</strong>
         <span>
-          {formatDistanceToNow(new Date(props.created_at), {
+         {formatDistanceToNow(new Date(props.created_at), {
             addSuffix: true,
             locale: ptBR,
-          })}
+          })} 
         </span>
       </CardTitle>
 
