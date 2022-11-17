@@ -1,7 +1,7 @@
-import { HeaderContainer } from "./styles";
+/* eslint-disable jsx-a11y/alt-text */
+import { HeaderContainer } from './styles'
 
-
-export function Header(){
+export function Header() {
   return (
     <HeaderContainer>
       <img src="./src/assets/effect.png" />

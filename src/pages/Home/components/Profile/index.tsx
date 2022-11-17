@@ -1,9 +1,16 @@
-import { ArrowSquareOut, Buildings, GithubLogo, Users } from "phosphor-react";
-import { useEffect, useState } from "react";
-import { InfosContent, InfoProfile, ProfileContainer, ProfileContent, ProfileSubtitle, ProfileTitle } from "./styles";
-import axios from "axios"
+import { ArrowSquareOut, Buildings, GithubLogo, Users } from 'phosphor-react'
+import { useEffect, useState } from 'react'
+import {
+  InfosContent,
+  InfoProfile,
+  ProfileContainer,
+  ProfileContent,
+  ProfileSubtitle,
+  ProfileTitle,
+} from './styles'
+import axios from 'axios'
 
-interface GetDataGitHub{
+interface GetDataGitHub {
   login: string
   name: string
   avatar_url: string
@@ -12,62 +19,57 @@ interface GetDataGitHub{
   bio: string
 }
 
-export function Profile(){
+export function Profile() {
   const [dataGit, setDataGit] = useState<GetDataGitHub>()
 
   async function GetGitHub() {
-    const response = await axios.get("https://api.github.com/users/wwilliamsantana")
+    const response = await axios.get(
+      'https://api.github.com/users/wwilliamsantana',
+    )
 
     setDataGit(response.data)
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     GetGitHub()
   }, [])
 
-  if(!dataGit){
+  if (!dataGit) {
     return <div>Erro</div>
   }
 
   return (
-    
-   <ProfileContainer>
-      <img src={dataGit.avatar_url}/>
-      
+    <ProfileContainer>
+      <img src={dataGit.avatar_url} />
+
       <ProfileContent>
         <ProfileTitle>
           <h2>{dataGit.name}</h2>
-          <a href={dataGit.html_url} target={"_blank"}>
+          <a href={dataGit.html_url} target={'_blank'} rel="noreferrer">
             Github
-            <ArrowSquareOut size={14} weight={"fill"} />
+            <ArrowSquareOut size={14} weight={'fill'} />
           </a>
         </ProfileTitle>
 
-        <ProfileSubtitle>
-          {dataGit.bio}
-        </ProfileSubtitle>
+        <ProfileSubtitle>{dataGit.bio}</ProfileSubtitle>
 
         <InfosContent>
-
           <InfoProfile>
-            <GithubLogo size={18}/>
-            <span>{dataGit.login}</span> 
+            <GithubLogo size={18} />
+            <span>{dataGit.login}</span>
           </InfoProfile>
 
           <InfoProfile>
-            <Buildings size={18}/>
-            <span>Rocketseat</span> 
+            <Buildings size={18} />
+            <span>Rocketseat</span>
           </InfoProfile>
 
           <InfoProfile>
-            <Users size={18}/>
-            <span>{dataGit.followers} Seguidores</span> 
+            <Users size={18} />
+            <span>{dataGit.followers} Seguidores</span>
           </InfoProfile>
-
         </InfosContent>
-
       </ProfileContent>
-   </ProfileContainer>
-  
+    </ProfileContainer>
   )
 }

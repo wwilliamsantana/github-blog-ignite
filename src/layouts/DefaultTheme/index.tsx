@@ -1,14 +1,13 @@
-import { Outlet } from "react-router-dom";
-import { Header } from "../../components/Header";
-import { ContainerContent } from "./styles";
+import { Outlet } from 'react-router-dom'
+import { Header } from '../../components/Header'
+import { ContainerContent } from './styles'
 
-
-export function DefaultTheme(){
+export function DefaultTheme() {
   return (
     <div>
-      <Header/>
+      <Header />
       <ContainerContent>
-        <Outlet/>
+        <Outlet />
       </ContainerContent>
     </div>
   )

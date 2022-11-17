@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    background-color: ${porps => porps.theme["base-background"]};
+    background-color: ${(porps) => porps.theme['base-background']};
     -webkit-font-smoothing: antialiased;
   }
 

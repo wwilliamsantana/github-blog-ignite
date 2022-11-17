@@ -1,12 +1,11 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const ProfileContainer = styled.div`
   width: 100%;
   border-radius: 10px;
 
   padding: 2rem 2rem 2rem 2.5rem;
-  background: ${props => props.theme["base-profile"]};
+  background: ${(props) => props.theme['base-profile']};
   box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
 
   display: flex;
@@ -16,12 +15,11 @@ export const ProfileContainer = styled.div`
 
   margin-top: -6rem;
 
-  img{
+  img {
     width: 142px;
     height: 142px;
     border-radius: 8px;
   }
-
 `
 
 export const ProfileContent = styled.div`
@@ -36,30 +34,29 @@ export const ProfileTitle = styled.div`
   justify-content: space-between;
   font-weight: bold;
 
-  h2{
+  h2 {
     font-size: 24px;
-    color: ${props => props.theme["base-title"]};
+    color: ${(props) => props.theme['base-title']};
   }
 
-  a{
+  a {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    color: ${props => props.theme.blue};
+    color: ${(props) => props.theme.blue};
     text-transform: uppercase;
     gap: 0.5rem;
     text-decoration: none;
 
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
-
 `
 
 export const ProfileSubtitle = styled.p`
-  color: ${props => props.theme["base-text"]};
+  color: ${(props) => props.theme['base-text']};
   width: 38.25rem;
 `
 
@@ -75,12 +72,12 @@ export const InfoProfile = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 0.5rem;
-  
-  svg{
-    color: ${props => props.theme["base-label"]};
+
+  svg {
+    color: ${(props) => props.theme['base-label']};
   }
 
-  span{
-    color: ${props => props.theme["base-subtile"]};
+  span {
+    color: ${(props) => props.theme['base-subtile']};
   }
 `
