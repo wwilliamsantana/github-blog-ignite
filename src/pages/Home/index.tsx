@@ -1,4 +1,3 @@
-
 import { Card } from "./components/Card";
 import { Profile } from "./components/Profile";
 import { SearchForm } from "./components/SearchForm";
