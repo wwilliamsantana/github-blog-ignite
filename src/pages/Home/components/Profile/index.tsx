@@ -14,7 +14,7 @@ export function Profile(){
           <h2>William Santana</h2>
           <a href="/">
             Github
-            <ArrowSquareOut size={16} weight={"fill"} />
+            <ArrowSquareOut size={14} weight={"fill"} />
           </a>
         </ProfileTitle>
 

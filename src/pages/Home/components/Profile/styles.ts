@@ -36,6 +36,7 @@ export const ProfileTitle = styled.div`
   justify-content: space-between;
   font-weight: bold;
 
+
   h2{
     font-size: 24px;
     color: ${props => props.theme["base-title"]};
@@ -44,12 +45,21 @@ export const ProfileTitle = styled.div`
   a{
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 12px;
     color: ${props => props.theme.blue};
     text-transform: uppercase;
     gap: 0.5rem;
     text-decoration: none;
+
+    &:hover{
+      text-decoration: underline;
+    }
   }
+
+  
+
+ 
 
 `
 
