@@ -31,7 +31,11 @@ export const CardTitle = styled.div`
   }
 `
 
-export const CardText = styled.div`
-  color: ${props => props.theme["base-title"]};
+export const CardText = styled.p`
+  color: ${props => props.theme["base-text"]};
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 `
