@@ -13,6 +13,7 @@ export const CardContainer = styled.div`
 export const CardTitle = styled.div`
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
  
   gap: 1rem;
 
@@ -21,6 +22,7 @@ export const CardTitle = styled.div`
     font-weight: bold;
     color: ${props => props.theme["base-title"]};
     line-height: 32px;
+    padding: 0 0.5rem;
   }
 
   span{

@@ -36,7 +36,6 @@ export const ProfileTitle = styled.div`
   justify-content: space-between;
   font-weight: bold;
 
-
   h2{
     font-size: 24px;
     color: ${props => props.theme["base-title"]};
@@ -57,14 +56,11 @@ export const ProfileTitle = styled.div`
     }
   }
 
-  
-
- 
-
 `
 
-export const ProfileSubtitle = styled.div`
+export const ProfileSubtitle = styled.p`
   color: ${props => props.theme["base-text"]};
+  width: 38.25rem;
 `
 
 export const InfosContent = styled.div`
