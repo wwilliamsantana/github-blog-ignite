@@ -24,6 +24,11 @@ export const CardTitle = styled.div`
     color: ${(props) => props.theme['base-title']};
     line-height: 32px;
     padding: 0 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   span {

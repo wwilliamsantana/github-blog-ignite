@@ -34,7 +34,7 @@ export function Home() {
     const query = !data ? '' : data
     const response = await axios.get('https://api.github.com/search/issues', {
       params: {
-        q: `repo:rocketseat-education/reactjs-github-blog-challenge is:issue ${query}`,
+        q: `repo:wwilliamsantana/github-blog-ignite is:issue ${query}`,
       },
     })
     setIssuesItems(response.data.items)

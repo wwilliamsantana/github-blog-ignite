@@ -50,7 +50,21 @@ export const InfosContent = styled.div`
 export const ContentPost = styled.div`
   padding: 2.5rem 2rem;
 
+  h3 {
+    margin: 1rem 0;
+  }
+
+  li {
+    margin-left: 3rem;
+  }
+
   p {
+    margin: 0.5rem 0;
+  }
+
+  p,
+  h3,
+  li {
     color: ${(props) => props.theme['base-text']};
   }
 `

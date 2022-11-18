@@ -30,7 +30,7 @@ export function Post() {
 
   async function GetIssues() {
     const response = await axios.get(
-      `https://api.github.com/repos/rocketseat-education/reactjs-github-blog-challenge/issues/${id}`,
+      `https://api.github.com/repos/wwilliamsantana/github-blog-ignite/issues/${id}`,
     )
     setData(response.data)
   }

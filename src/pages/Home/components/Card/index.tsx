@@ -1,6 +1,7 @@
 import { CardContainer, CardText, CardTitle } from './styles'
 import { formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
+import ReactMarkdown from 'react-markdown'
 
 interface CardPorps {
   title: string
@@ -21,7 +22,9 @@ export function Card(props: CardPorps) {
           })}
         </span>
       </CardTitle>
-      <CardText>{props.body}</CardText>
+      <CardText>
+        <ReactMarkdown>{props.body}</ReactMarkdown>
+      </CardText>
     </CardContainer>
   )
 }
