@@ -1,5 +1,5 @@
 # Github Blog Ignite
--Desafio proposto pela Rocketseat.
+- Desafio proposto pela Rocketseat.
 
 ## :computer: Sobre
 
